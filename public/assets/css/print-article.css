@@ -1,0 +1,57 @@
+@page {
+    size:A4;
+    margin:0;
+}
+@media print {
+    html, body {
+        font-family: Arial, sans-serif;
+        width:210mm;
+        height:297mm;
+        font-size:5mm;
+        padding: 5mm;
+        padding-top: 5mm;
+    }
+    h1,h2,h3{
+        font-weight: normal;
+        color: #93afc9;
+        margin: 0px;
+        padding: 0px;
+        margin-bottom: 3mm;
+    }
+    h1{
+        font-size: 9mm;
+    }
+    h3{
+        font-size: 7mm;
+        margin-top: 10mm;
+    }
+    p{
+        font-weight: 100;
+        letter-spacing: 0.1mm;
+        margin: 0px;
+        padding: 0px;
+    }
+    p, li{
+        color: #333;
+    }
+    header, article, footer{
+        width: 200mm;
+    }
+    header{
+        text-align: center;
+        margin-bottom: 30mm;
+    }
+    header img{
+        opacity: .5;
+        width: 70mm;
+        float: right;
+    }
+    article{
+        text-align: left;
+    }
+    .article-header{
+        margin-bottom: 15mm;
+    }
+}
+
+
