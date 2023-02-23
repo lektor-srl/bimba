@@ -87,7 +87,8 @@
             // Text editor init
             tinymce.init({
                 selector: '#articleContent',
-                plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist pageembed powerpaste table advtable tinymcespellchecker',
+                //plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist pageembed powerpaste table advtable tinymcespellchecker',
+                plugins: 'autolink lists table',
                 menubar: 'file edit view insert format tools table help',
                 toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
                 min_height: 600,
@@ -112,7 +113,7 @@
                         "softDelete" : softDelete
                     }
 
-                    console.lo
+
                     $.ajax({
                         url: '/cancellaArticolo',
                         data: data,

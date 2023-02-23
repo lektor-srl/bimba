@@ -5,11 +5,13 @@ namespace App\Moduli\articolo\controllers;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Moduli\articolo\models\Articolo;
+use App\Moduli\articolo\models\ArticoloBackup;
 use App\Moduli\articolo\models\ArticoloVersioni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use PHPUnit\Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -126,13 +128,18 @@ class articoloController extends Controller
 
                 DB::commit();
 
+                // Registra i backup dei dati
+                $this->registraBackup($data);
+
                 $toastMessage->message = (string) 'Modifiche salvate con successo!';
                 $toastMessage->type = (string) 'success';
 
                 Log::info('Modificato articolo con id: '. $articolo->id);
             }catch (\Exception $e){
                 DB::rollBack();
+
                 $toastMessage->message = (string) 'Errore nel salvataggio dei dati!';
+                Log::error($e->getMessage());
                 $toastMessage->type = (string) 'warning';
                 Log::error($e->getMessage());
             }
@@ -312,6 +319,17 @@ class articoloController extends Controller
 
     }
 
+    private function registraBackup($data)
+    {
+        $articoloBackup = ArticoloBackup::where("titolo", base64_encode($data["articleTitle"]))->first();
+        if(!$articoloBackup){
+            $articoloBackup = new ArticoloBackup();
+        }
 
+        $articoloBackup->titolo = base64_encode($data["articleTitle"]);
+        $articoloBackup->contenuto = base64_encode($data["articleContent"]);
+        $articoloBackup->estratto = base64_encode($data["articleExcerpt"]);
+        $articoloBackup->save();
+    }
 
 }
