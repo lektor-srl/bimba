@@ -24,7 +24,7 @@ class NuovoArticoloModal extends Component
         $clienti = Cliente::all()->toArray();
 
         return view('components.nuovo-articolo-modal')->with([
-                "clienti" => $clienti
-            ]);
+            "clienti" => $clienti
+        ]);
     }
 }
