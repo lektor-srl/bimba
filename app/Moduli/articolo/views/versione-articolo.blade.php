@@ -8,6 +8,7 @@
                     <ul class="uk-breadcrumb uk-visible@m">
                         <li><a href="/">Home</a></li>
                         <li><a href="/cliente/{{ $articolo->cliente->id }}">{{ Helper::decodifica($articolo->cliente->nome) }}</a></li>
+                        <li><a href="/cliente/{{ $articolo->cliente->id }}">{{ ucfirst($articolo->tipologia->name) }}</a></li>
                         <li><span>{{ $articolo->titolo }}</span></li>
                     </ul>
                 </div>

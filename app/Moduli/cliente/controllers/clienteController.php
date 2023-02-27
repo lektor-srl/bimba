@@ -26,7 +26,7 @@ class clienteController extends Controller
                 continue;
             }
 
-            switch ($articolo['tipologia']){
+            switch ($articolo->tipologia->name){
                 case 'progetto':
                     $progetti[] = [
                         'id' => $articolo['id'],

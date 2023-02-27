@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ArticlesTypes;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,9 +19,9 @@ class DatabaseSeeder extends Seeder
        \App\Models\ArticlesTypes::factory()
            ->count(3)
            ->sequence(
-               ['name' => 'progetto'],
-               ['name' => 'credenziale'],
-               ['name' => 'rapportino'],
+               ['id' => ArticlesTypes::TYPEPROGETTO , 'name' => 'progetto'],
+               ['id' => ArticlesTypes::TYPECREDENZIALE , 'name' => 'credenziale'],
+               ['id' => ArticlesTypes::TYPERAPPORTINO , 'name' => 'rapportino'],
            )
            ->create();
 

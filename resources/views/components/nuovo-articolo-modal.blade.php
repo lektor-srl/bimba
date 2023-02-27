@@ -22,6 +22,18 @@
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
+                        <label class="input-group-text">Tipologia</label>
+                    </div>
+                    <select name="newProgetto[id_tipologia]" class="custom-select">
+                        @foreach($articoliTipologie as $tipologia)
+                            <option value="{{ $tipologia['id'] }}">{{ $tipologia['name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
                         <span class="input-group-text">Titolo</span>
                     </div>
                     <input type="text" name="newProgetto[titolo]" class="form-control">

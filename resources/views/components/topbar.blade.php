@@ -13,32 +13,14 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li><a data-toggle="modal" data-target="#nuovo-cliente-modal">Cliente</a></li>
-                            <li><a data-toggle="modal" data-target="#nuovo-articolo-modal">Progetto</a></li>
+                            <li><a data-toggle="modal" data-target="#nuovo-articolo-modal">Articolo</a></li>
                         </ul>
                     </div>
                 </li>
                 @endif
                 <li>
-                    <a href="#">Clienti</a>
-                    <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            @foreach($clienti as $cliente)
-                                <li><a href="/cliente/{{ $cliente['id'] }}">{{ $cliente['nome'] }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <a href="/cliente/1">Clienti</a>
                 </li>
-                <li>
-                    <a href="#">Progetti</a>
-                    <div style="min-width: 400px"class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            @foreach($progetti as $progetti)
-                                <li><a href="/articolo/view/{{ $progetti['id'] }}">{{ $progetti['titolo'] }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </li>
-
                 <li>
                     <a>{{ Auth::user()->name }}</a>
                     <div class="uk-navbar-dropdown">

@@ -24,6 +24,7 @@ class ArticlesTypesFactory extends Factory
     public function definition()
     {
         return [
+            'id' => null,
             'name' => 'progetto',
         ];
     }

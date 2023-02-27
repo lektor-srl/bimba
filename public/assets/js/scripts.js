@@ -46,6 +46,7 @@ function saveNuovoCliente(token) {
 function saveNuovoProgetto(token) {
     var title = $("input[name='newProgetto[titolo]']").val();
     var id_cliente = $("select[name='newProgetto[id_cliente]']").val();
+    var id_tipologia = $("select[name='newProgetto[id_tipologia]']").val();
     if (!title || title == '') {
         showModalMessage('warning', 'Titolo non valido!');
         return 0;
@@ -53,7 +54,8 @@ function saveNuovoProgetto(token) {
     var data = {
         "_token": token,
         "titolo": title,
-        "id_cliente": id_cliente
+        "id_cliente": id_cliente,
+        "id_tipologia": id_tipologia,
     };
 
     $.ajax({
@@ -73,7 +75,7 @@ function saveNuovoProgetto(token) {
             }
         },
         error: function (e) {
-            showModalMessage('warning', 'Errore 500. Riprovare più tardi');
+            showModalMessage('warning', e.message);
         }
     })
 }

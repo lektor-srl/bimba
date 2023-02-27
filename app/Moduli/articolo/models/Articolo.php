@@ -2,6 +2,7 @@
 
 namespace App\Moduli\articolo\models;
 
+use App\Models\ArticlesTypes;
 use App\Moduli\cliente\models\Cliente;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,9 @@ class Articolo extends Model
     }
     public function versioni(){
         return $this->hasMany(ArticoloVersioni::class, 'id_articolo', 'id')->orderByDesc('versione');
+    }
+    public function tipologia(){
+        return $this->hasOne(ArticlesTypes::class, 'id', 'id_tipologia');
     }
 
 }

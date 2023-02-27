@@ -43,7 +43,7 @@
                                     <h4 class="uk-accordion-title uk-margin-remove">{{ $progetto['titolo'] }}</h4>
                                     <div class="uk-accordion-content">
                                         <p>{{ $progetto['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $progetto['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi progetto <span uk-icon="icon: arrow-right"></span></a>
+                                        <a href="/articolo/view/{{ $progetto['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
@@ -62,7 +62,7 @@
                                     <h4 class="uk-accordion-title uk-margin-remove">{{ $credenziale['titolo'] }}</h4>
                                     <div class="uk-accordion-content">
                                         <p>{{ $credenziale['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $credenziale['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi progetto <span uk-icon="icon: arrow-right"></span></a>
+                                        <a href="/articolo/view/{{ $credenziale['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
@@ -72,7 +72,7 @@
                     </ul>
 
                     <!-- Lista call -->
-                    <h3 class="uk-margin-medium-top">Rapportini contatti</h3>
+                    <h3 class="uk-margin-medium-top">Rapportini</h3>
                     <ul class="list-faq" uk-accordion="multiple: true">
                         @if(count($page_data['rapportini']) > 0)
                             @foreach($page_data['rapportini'] as $rapportino)
@@ -80,7 +80,7 @@
                                     <h4 class="uk-accordion-title uk-margin-remove">{{ $rapportino['titolo'] }}</h4>
                                     <div class="uk-accordion-content">
                                         <p>{{ $rapportino['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $rapportino['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi progetto <span uk-icon="icon: arrow-right"></span></a>
+                                        <a href="/articolo/view/{{ $rapportino['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
