@@ -11,7 +11,7 @@
 <x-nuovo-cliente-modal></x-nuovo-cliente-modal>
 
 <!-- Nuovo progetto modale -->
-<x-nuovo-progetto-modal></x-nuovo-progetto-modal>
+<x-nuovo-articolo-modal></x-nuovo-articolo-modal>
 
 
 <div class="section-hero uk-background-blend-color-burn uk-background-top-center uk-background-cover uk-section-large1 cta" style="background-image: url(https://www.lektorweb.eu/wp-content/uploads/2020/01/iu.jpeg); background-position: center top">

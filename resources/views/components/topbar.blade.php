@@ -13,7 +13,7 @@
                     <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
                             <li><a data-toggle="modal" data-target="#nuovo-cliente-modal">Cliente</a></li>
-                            <li><a data-toggle="modal" data-target="#nuovo-progetto-modal">Progetto</a></li>
+                            <li><a data-toggle="modal" data-target="#nuovo-articolo-modal">Progetto</a></li>
                         </ul>
                     </div>
                 </li>

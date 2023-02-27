@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Moduli\cliente\models\Cliente;
 use Illuminate\View\Component;
 
-class NuovoProgettoModal extends Component
+class NuovoArticoloModal extends Component
 {
 
     public function __construct()
@@ -23,7 +23,7 @@ class NuovoProgettoModal extends Component
         // Carica i clienti
         $clienti = Cliente::all()->toArray();
 
-        return view('components.nuovo-progetto-modal')->with([
+        return view('components.nuovo-articolo-modal')->with([
                 "clienti" => $clienti
             ]);
     }
