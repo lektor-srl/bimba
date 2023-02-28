@@ -18,6 +18,7 @@ class clienteController extends Controller
 
         // Carico i dati del cliente con tutti i dati associati
         $cliente = Cliente::find($id);
+        $cliente->nome = Helper::decodifica($cliente->nome);
 
         // Ciclo i progetti e li salvo
         foreach ($cliente->articoli as $articolo) {
@@ -55,7 +56,7 @@ class clienteController extends Controller
         }
 
         $page_data = [
-            'cliente' => Helper::decodifica($cliente->nome),
+            'cliente' => $cliente,
             'progetti' => $progetti,
             'credenziali' => $credenziali,
             'rapportini' => $rapportini,

@@ -7,14 +7,15 @@
                 <div class="uk-width-2-3@m">
                     <ul class="uk-breadcrumb uk-visible@m">
                         <li><a href="/">Home</a></li>
-                        <li><span>{{ $page_data['cliente'] }}</span></li>
+                        <li><span>{{ $page_data['cliente']->nome }}</span></li>
                     </ul>
                 </div>
                 <div class="uk-width-1-3@m">
                     <div class="uk-margin">
-                        <form class="uk-search uk-search-default">
-                            <a href="" class="uk-search-icon-flip" uk-search-icon=""></a>
-                            <input id="autocomplete" class="uk-search-input" type="search" autocomplete="off" placeholder="Cerca in {{ $page_data['cliente'] }}..">
+                        <form id="form" method="GET" action="/ricerca" class="uk-margin-medium-top uk-margin-xlarge-bottom uk-search uk-search-default">
+                            <a class="uk-search-icon-flip" uk-search-icon="" onclick="document.getElementById('form').submit()"></a>
+                            <input name="key" class="uk-search-input" type="search" autocomplete="off" placeholder="Cerca in {{ $page_data['cliente']->nome }}..">
+                            <input name="client" class="uk-search-input uk-hidden" value="{{ $page_data['cliente']->id }}">
                         </form>
                     </div>
                 </div>
@@ -32,7 +33,7 @@
 
 
                 <div class="uk-width-3-4@m uk-flex-last@m">
-                    <h1>{{ $page_data['cliente'] }}</h1>
+                    <h1>{{ $page_data['cliente']->nome }}</h1>
 
                     <!-- Lista progetti -->
                     <h3 class="uk-margin-medium-top">Progetti - new</h3>
