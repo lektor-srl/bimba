@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class ricercaController extends Controller
 {
-    public function index(Request $request, $key)
+    public function index(Request $request, $key, $idCliente=null)
     {
         $page_data = [
             'progetti' => [],
@@ -21,8 +21,13 @@ class ricercaController extends Controller
         ];
 
         $key = strtolower($key);
+        $idCliente = (intval($idCliente)) ?: 0;
 
-        $articoli = Articolo::where('eliminato', false)->orderBy('created_at', 'desc')->get();
+
+        $articoli = Articolo::where('eliminato', false)
+            ->where('id_cliente', $idCliente ? '=' : '<>', $idCliente)
+            ->orderBy('created_at', 'desc')
+            ->get();
         foreach ($articoli as $articolo){
 
             $articolo->titolo = Helper::decodifica($articolo->titolo);
