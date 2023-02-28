@@ -4,46 +4,42 @@ namespace App\Moduli\home\controllers;
 
 use App\Http\Controllers\Controller;
 use App\Helper\Helper;
+use App\Models\ArticlesTypes;
 use App\Moduli\articolo\models\Articolo;
 
 class homeController extends Controller
 {
 
     public function index(){
-        if(boolval(env('MOSTRA_ARTICOLI_ELIMINATI'))){
-            // Mostra tutti gli articoli
-            $ultimiCensiti = Articolo::select('id', 'titolo')
-                ->orderByDesc('created_at')
-                ->limit(env('N_ULTIMI_ARTICOLI'))
-                ->get()
-                ->toArray();
+        // Mostra tutti gli articoli
+        $lastProgetti = Articolo::select('id', 'titolo')
+            ->where('id_tipologia', ArticlesTypes::TYPEPROGETTO)
+            ->whereRaw((!env('MOSTRA_ARTICOLI_ELIMINATI')) ? 'eliminato = false' : '1=1')
+            ->orderByDesc('created_at')
+            ->limit(env('N_ULTIMI_ARTICOLI'))
+            ->get()
+            ->toArray();
 
-            $ultimiModificati = Articolo::select('id', 'titolo')
-                ->orderByDesc('updated_at')
-                ->limit(env('N_ULTIMI_ARTICOLI'))
-                ->get()
-                ->toArray();
-        }else{
-            // Mostra solo gli articoli non eliminati
-            $ultimiCensiti = Articolo::select('id', 'titolo')
-                ->where('eliminato', 0)
-                ->orderByDesc('created_at')
-                ->limit(env('N_ULTIMI_ARTICOLI'))
-                ->get()
-                ->toArray();
+        $lastCredenziali = Articolo::select('id', 'titolo')
+            ->where('id_tipologia', ArticlesTypes::TYPECREDENZIALE)
+            ->whereRaw((!env('MOSTRA_ARTICOLI_ELIMINATI')) ? 'eliminato = false' : '1=1')
+            ->orderByDesc('created_at')
+            ->limit(env('N_ULTIMI_ARTICOLI'))
+            ->get()
+            ->toArray();
 
-            $ultimiModificati = Articolo::select('id', 'titolo')
-                ->where('eliminato', 0)
-                ->orderByDesc('updated_at')
-                ->limit(env('N_ULTIMI_ARTICOLI'))
-                ->get()
-                ->toArray();
-        }
-
+        $lastRapportini = Articolo::select('id', 'titolo')
+            ->where('id_tipologia', ArticlesTypes::TYPERAPPORTINO)
+            ->whereRaw((!env('MOSTRA_ARTICOLI_ELIMINATI')) ? 'eliminato = false' : '1=1')
+            ->orderByDesc('created_at')
+            ->limit(env('N_ULTIMI_ARTICOLI'))
+            ->get()
+            ->toArray();
 
         return view('home.views.home')->with([
-            'ultimiCensiti'=>$ultimiCensiti,
-            'ultimiModificati'=>$ultimiModificati
+            'lastProgetti'=>$lastProgetti,
+            'lastCredenziali'=>$lastCredenziali,
+            'lastRapportini'=>$lastRapportini
         ]);
     }
 

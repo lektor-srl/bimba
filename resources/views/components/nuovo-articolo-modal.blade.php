@@ -1,8 +1,8 @@
-<div class="modal fade" id="nuovo-progetto-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="nuovo-articolo-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuovo progetto</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nuovo articolo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -19,6 +19,18 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Tipologia</label>
+                    </div>
+                    <select name="newProgetto[id_tipologia]" class="custom-select">
+                        @foreach($articoliTipologie as $tipologia)
+                            <option value="{{ $tipologia['id'] }}">{{ $tipologia['name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">

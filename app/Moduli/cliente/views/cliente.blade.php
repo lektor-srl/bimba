@@ -30,22 +30,62 @@
                 @include('layouts.sidebar-clienti')
                 @yield('sidebar-clienti')
 
-                <div class="uk-width-3-4@m uk-flex-last@m">
-                    <h1>{{ $page_data['cliente'] }} - Lista progetti</h1>
 
+                <div class="uk-width-3-4@m uk-flex-last@m">
+                    <h1>{{ $page_data['cliente'] }}</h1>
+
+                    <!-- Lista progetti -->
+                    <h3 class="uk-margin-medium-top">Progetti</h3>
                     <ul class="list-faq" uk-accordion="multiple: true">
                         @if(count($page_data['progetti']) > 0)
                             @foreach($page_data['progetti'] as $progetto)
                                 <li>
-                                    <h3 class="uk-accordion-title uk-margin-remove">{{ $progetto['titolo'] }}</h3>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $progetto['titolo'] }}</h4>
                                     <div class="uk-accordion-content">
                                         <p>{{ $progetto['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $progetto['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi progetto <span uk-icon="icon: arrow-right"></span></a>
+                                        <a href="/articolo/view/{{ $progetto['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
                         @else
                         <p>Nessun progetto ancora censito</p>
+                        @endif
+                    </ul>
+
+
+                    <!-- Credenziali -->
+                    <h3 class="uk-margin-medium-top">Credenziali</h3>
+                    <ul class="list-faq" uk-accordion="multiple: true">
+                        @if(count($page_data['credenziali']) > 0)
+                            @foreach($page_data['credenziali'] as $credenziale)
+                                <li>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $credenziale['titolo'] }}</h4>
+                                    <div class="uk-accordion-content">
+                                        <p>{{ $credenziale['estratto'] }}</p>
+                                        <a href="/articolo/view/{{ $credenziale['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @else
+                            <p>Nessun oggetto ancora censito</p>
+                        @endif
+                    </ul>
+
+                    <!-- Lista call -->
+                    <h3 class="uk-margin-medium-top">Rapportini</h3>
+                    <ul class="list-faq" uk-accordion="multiple: true">
+                        @if(count($page_data['rapportini']) > 0)
+                            @foreach($page_data['rapportini'] as $rapportino)
+                                <li>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $rapportino['titolo'] }}</h4>
+                                    <div class="uk-accordion-content">
+                                        <p>{{ $rapportino['estratto'] }}</p>
+                                        <a href="/articolo/view/{{ $rapportino['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @else
+                            <p>Nessun oggetto ancora censito</p>
                         @endif
                     </ul>
 

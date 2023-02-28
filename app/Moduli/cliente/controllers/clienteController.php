@@ -7,45 +7,58 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Moduli\cliente\models\Cliente;
 use Illuminate\Support\Facades\DB;
-use PHPUnit\TextUI\Help;
 
 class clienteController extends Controller
 {
     public function index(Request $request, $id){
 
-
-        $page_data = [];
         $progetti = [];
+        $credenziali = [];
+        $rapportini = [];
 
-        // Carico i dati del cliente con tutti i progetti associati
+        // Carico i dati del cliente con tutti i dati associati
         $cliente = Cliente::find($id);
 
         // Ciclo i progetti e li salvo
-        foreach ($cliente->articoli as $progetto) {
-            if($progetto['tipologia'] === 'progetto'){
-                // Controllo se il progetto è eliminato
-                if($progetto['eliminato']){
-                    if(boolval(env('MOSTRA_ARTICOLI_ELIMINATI'))){
-                        $progetti[] = [
-                            'id' => $progetto['id'],
-                            'titolo' => Helper::decodifica($progetto['titolo']),
-                            'estratto' => Helper::decodifica($progetto['estratto']),
-                        ];
-                    }
-                }else{
-                    $progetti[] = [
-                        'id' => $progetto['id'],
-                        'titolo' => Helper::decodifica($progetto['titolo']),
-                        'estratto' => Helper::decodifica($progetto['estratto']),
-                    ];
-                }
-
+        foreach ($cliente->articoli as $articolo) {
+            // Salto gli articoli eliminati se non c'è il parametro
+            if(boolval($articolo['eliminato']) && !boolval(env('MOSTRA_ARTICOLI_ELIMINATI'))){
+                continue;
             }
+
+            switch ($articolo->tipologia->name){
+                case 'progetto':
+                    $progetti[] = [
+                        'id' => $articolo['id'],
+                        'titolo' => Helper::decodifica($articolo['titolo']),
+                        'estratto' => Helper::decodifica($articolo['estratto']),
+                    ];
+                    break;
+
+                case 'credenziale':
+                    $credenziali[] = [
+                        'id' => $articolo['id'],
+                        'titolo' => Helper::decodifica($articolo['titolo']),
+                        'estratto' => Helper::decodifica($articolo['estratto']),
+                    ];
+                    break;
+
+                case 'rapportino':
+                    $rapportini[] = [
+                        'id' => $articolo['id'],
+                        'titolo' => Helper::decodifica($articolo['titolo']),
+                        'estratto' => Helper::decodifica($articolo['estratto']),
+                    ];
+                    break;
+            }
+
         }
 
         $page_data = [
             'cliente' => Helper::decodifica($cliente->nome),
-            'progetti' => $progetti
+            'progetti' => $progetti,
+            'credenziali' => $credenziali,
+            'rapportini' => $rapportini,
         ];
 
         return view('cliente.views.cliente')

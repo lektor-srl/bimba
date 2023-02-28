@@ -11,7 +11,7 @@
 <x-nuovo-cliente-modal></x-nuovo-cliente-modal>
 
 <!-- Nuovo progetto modale -->
-<x-nuovo-progetto-modal></x-nuovo-progetto-modal>
+<x-nuovo-articolo-modal></x-nuovo-articolo-modal>
 
 
 <div class="section-hero uk-background-blend-color-burn uk-background-top-center uk-background-cover uk-section-large1 cta" style="background-image: url(https://www.lektorweb.eu/wp-content/uploads/2020/01/iu.jpeg); background-position: center top">
@@ -40,20 +40,28 @@
 
 <div class="uk-section">
     <div class="uk-container">
-        <div class="uk-child-width-1-2@s text-dark" uk-grid="">
+        <div class="uk-child-width-1-3@s text-dark" uk-grid="">
             <div>
-                <h3 style="margin-bottom: 40px">Ultimi progetti censiti</h3>
+                <h3 style="margin-bottom: 40px">Ultimi progetti</h3>
                 <ul class="uk-list uk-list-large uk-list-divider link-icon-right">
-                    @foreach($ultimiCensiti as $progetto)
+                    @foreach($lastProgetti as $progetto)
                         <li><a href="/articolo/view/{{ $progetto['id'] }}">{{ Helper::decodifica($progetto['titolo']) }}</a></li>
                     @endforeach
                 </ul>
             </div>
             <div>
-                <h3 style="margin-bottom: 40px">Ultimi progetti modificati</h3>
+                <h3 style="margin-bottom: 40px">Ultime credenziali</h3>
                 <ul class="uk-list uk-list-large uk-list-divider link-icon-right">
-                    @foreach($ultimiModificati as $progetto)
-                        <li><a href="/articolo/view/{{ $progetto['id'] }}">{{ Helper::decodifica($progetto['titolo']) }}</a></li>
+                    @foreach($lastCredenziali as $credenziale)
+                        <li><a href="/articolo/view/{{ $credenziale['id'] }}">{{ Helper::decodifica($credenziale['titolo']) }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 40px">Ultimi rapportini</h3>
+                <ul class="uk-list uk-list-large uk-list-divider link-icon-right">
+                    @foreach($lastRapportini as $rapportino)
+                        <li><a href="/articolo/view/{{ $rapportino['id'] }}">{{ Helper::decodifica($rapportino['titolo']) }}</a></li>
                     @endforeach
                 </ul>
             </div>

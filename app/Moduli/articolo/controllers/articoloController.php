@@ -173,6 +173,7 @@ class articoloController extends Controller
     public function new(Request $request)
     {
         $data = $request->all();
+
         $response = [];
         if (!empty($data['titolo']) && $data['titolo'] != '') {
             try {
@@ -183,8 +184,9 @@ class articoloController extends Controller
                 //$articolo->id = Helper::createId();
                 $articolo->id_cliente = $data['id_cliente'];
                 $articolo->id_utente = Auth::user()->id;
+                $articolo->id_tipologia = $data['id_tipologia'];
                 $articolo->titolo = Helper::codifica($data['titolo']);
-                $articolo->tipologia = 'progetto';
+
                 $articolo->contenuto = env("DEFAULT_ARTICLE_CONTENT");
                 $articolo->estratto = env("DEFAULT_ARTICLE_EXCERPT");
                 $articolo->save();
@@ -298,7 +300,7 @@ class articoloController extends Controller
                 $articoloNew->id_articolo = $articoloStored->id;
                 $articoloNew->id_cliente = $articoloStored->id_cliente;
                 $articoloNew->id_utente = $articoloStored->id_utente;
-                $articoloNew->tipologia = $articoloStored->tipologia;
+                $articoloNew->id_tipologia = $articoloStored->id_tipologia;
                 $articoloNew->contenuto = $articoloStored->contenuto;
                 $articoloNew->estratto = $articoloStored->estratto;
                 $articoloNew->titolo = $articoloStored->titolo;
