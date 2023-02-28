@@ -4,7 +4,7 @@
             <div class="uk-child-width-1-2@m uk-text-center" uk-grid="">
                 <div class="uk-flex-first@m uk-text-left@m">
                     <p class="uk-text-small">Lektor S.r.l. {{ date('Y') }}
-                        - {{ 'Laravel '.app()->version().' - PHP '.phpversion() }}</p>
+                        - {{ 'Laravel '.app()->version().' - PHP '.phpversion() . '- BimBa v' .file_get_contents(app_path('version.txt')) }}</p>
                 </div>
             </div>
         </div>
