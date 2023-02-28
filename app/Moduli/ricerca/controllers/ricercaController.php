@@ -20,6 +20,8 @@ class ricercaController extends Controller
             'rapportini' => [],
         ];
 
+        $key = strtolower($key);
+
         $articoli = Articolo::where('eliminato', false)->orderBy('created_at', 'desc')->get();
         foreach ($articoli as $articolo){
 
@@ -28,9 +30,9 @@ class ricercaController extends Controller
             $articolo->estratto = Helper::decodifica($articolo->estratto);
 
             if(
-                str_contains($articolo->titolo, $key) ||
-                str_contains($articolo->contenuto, $key) ||
-                str_contains($articolo->estratto, $key)
+                str_contains(strtolower($articolo->titolo), $key) ||
+                str_contains(strtolower($articolo->contenuto), $key) ||
+                str_contains(strtolower($articolo->estratto), $key)
             ){
                 switch ($articolo->id_tipologia){
                     case ArticlesTypes::TYPEPROGETTO:
