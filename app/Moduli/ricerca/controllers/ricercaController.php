@@ -12,15 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class ricercaController extends Controller
 {
-    public function index(Request $request, $key, $idCliente=null)
+    public function index(Request $request)
     {
         $page_data = [
             'progetti' => [],
             'credenziali' => [],
             'rapportini' => [],
         ];
+        $data = $request->all();
 
-        $key = strtolower($key);
+        $key = strtolower($data['key']);
+        $idCliente = $data['client'] ?? 0;
         $idCliente = (intval($idCliente)) ?: 0;
 
 

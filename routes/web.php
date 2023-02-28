@@ -63,7 +63,7 @@ Route::get('/ruoli', [ruoloController::class, 'index'])
 Route::post('/ruoli/edit', [ruoloController::class, 'edit'])
     ->middleware(['auth']);
 
-Route::get('/ricerca/{key}/{idCliente?}', [ricercaController::class, 'index'])
+Route::get('/ricerca', [ricercaController::class, 'index'])
     ->middleware(['auth']);
 
 

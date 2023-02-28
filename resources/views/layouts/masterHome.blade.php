@@ -23,9 +23,9 @@
         <h1 class="uk-heading-primary uk-text-center uk-margin-large-top uk-light">BimBa</h1>
         <p class="uk-text-lead uk-text-center uk-light">La documentazione ufficiale di Lektor S.r.l.</p>
         <div class="uk-flex uk-flex-center">
-            <form class="uk-margin-medium-top uk-margin-xlarge-bottom uk-search uk-search-default">
+            <form method="GET" action="/ricerca" class="uk-margin-medium-top uk-margin-xlarge-bottom uk-search uk-search-default">
                 <a href="" class="uk-search-icon-flip" uk-search-icon=""></a>
-                <input id="autocomplete" class="uk-search-input uk-form-large" type="search" autocomplete="off" name="s" placeholder="Cerca per parola chiave">
+                <input id="autocomplete" class="uk-search-input uk-form-large" type="search" autocomplete="off" name="key" placeholder="Cerca per parola chiave">
             </form>
         </div>
     </div>
