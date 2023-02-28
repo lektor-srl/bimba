@@ -7,14 +7,14 @@
                 <div class="uk-width-2-3@m">
                     <ul class="uk-breadcrumb uk-visible@m">
                         <li><a href="/">Home</a></li>
-                        <li><span>{{ $page_data['cliente'] }}</span></li>
+                        <li><span>ricerca</span></li>
                     </ul>
                 </div>
                 <div class="uk-width-1-3@m">
                     <div class="uk-margin">
                         <form class="uk-search uk-search-default">
                             <a href="" class="uk-search-icon-flip" uk-search-icon=""></a>
-                            <input id="autocomplete" class="uk-search-input" type="search" autocomplete="off" placeholder="Cerca in {{ $page_data['cliente'] }}..">
+                            <input id="autocomplete" class="uk-search-input" type="search" autocomplete="off">
                         </form>
                     </div>
                 </div>
@@ -27,15 +27,12 @@
     <div class="uk-section uk-section-small uk-padding-remove-bottom section-content">
         <div class="uk-container">
             <div class="uk-grid-medium" uk-grid="">
-                @include('layouts.sidebar-clienti')
-                @yield('sidebar-clienti')
 
 
                 <div class="uk-width-3-4@m uk-flex-last@m">
-                    <h1>{{ $page_data['cliente'] }}</h1>
-
+                    <h1>Risultati ricerca</h1>
                     <!-- Lista progetti -->
-                    <h3 class="uk-margin-medium-top">Progetti - new</h3>
+                    <h3 class="uk-margin-medium-top">Progetti</h3>
                     <ul class="list-faq" uk-accordion="multiple: true">
                         @if(count($page_data['progetti']) > 0)
                             @foreach($page_data['progetti'] as $progetto)
@@ -48,10 +45,9 @@
                                 </li>
                             @endforeach
                         @else
-                        <p>Nessun progetto ancora censito</p>
+                            <p>Nessun progetto ancora censito</p>
                         @endif
                     </ul>
-
 
                     <!-- Credenziali -->
                     <h3 class="uk-margin-medium-top">Credenziali</h3>
@@ -71,6 +67,7 @@
                         @endif
                     </ul>
 
+                    
                     <!-- Lista call -->
                     <h3 class="uk-margin-medium-top">Rapportini</h3>
                     <ul class="list-faq" uk-accordion="multiple: true">
@@ -88,7 +85,6 @@
                             <p>Nessun oggetto ancora censito</p>
                         @endif
                     </ul>
-
                 </div>
             </div>
         </div>
