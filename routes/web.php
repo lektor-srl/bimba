@@ -1,5 +1,6 @@
 <?php
 
+use App\Moduli\ricerca\controllers\ricercaController;
 use Illuminate\Support\Facades\Route;
 use App\Moduli\home\controllers\homeController;
 use App\Moduli\cliente\controllers\clienteController;
@@ -60,6 +61,9 @@ Route::get('/ruoli', [ruoloController::class, 'index'])
     ->middleware(['auth']);
 
 Route::post('/ruoli/edit', [ruoloController::class, 'edit'])
+    ->middleware(['auth']);
+
+Route::get('/ricerca', [ricercaController::class, 'index'])
     ->middleware(['auth']);
 
 

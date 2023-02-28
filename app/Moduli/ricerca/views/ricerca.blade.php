@@ -7,19 +7,10 @@
                 <div class="uk-width-2-3@m">
                     <ul class="uk-breadcrumb uk-visible@m">
                         <li><a href="/">Home</a></li>
-                        <li><span>{{ $page_data['cliente']->nome }}</span></li>
+                        <li><span>ricerca</span></li>
                     </ul>
                 </div>
-                <div class="uk-width-1-3@m">
-                    <div class="uk-margin">
-                        <form id="form" method="GET" action="/ricerca" class="uk-margin-medium-top uk-margin-xlarge-bottom uk-search uk-search-default">
-                            <a class="uk-search-icon-flip" uk-search-icon="" onclick="document.getElementById('form').submit()"></a>
-                            <input name="key" class="uk-search-input" type="search" autocomplete="off" placeholder="Cerca in {{ $page_data['cliente']->nome }}..">
-                            <input name="client" class="uk-search-input uk-hidden" value="{{ $page_data['cliente']->id }}">
-                        </form>
-                    </div>
-                </div>
-            </div>
+
             <div class="border-top"></div>
         </div>
     </div>
@@ -28,31 +19,27 @@
     <div class="uk-section uk-section-small uk-padding-remove-bottom section-content">
         <div class="uk-container">
             <div class="uk-grid-medium" uk-grid="">
-                @include('layouts.sidebar-clienti')
-                @yield('sidebar-clienti')
 
 
-                <div class="uk-width-3-4@m uk-flex-last@m">
-                    <h1>{{ $page_data['cliente']->nome }}</h1>
-
+                <div class="uk-width-4-4@m uk-flex-last@m">
+                    <h1>Risultati ricerca</h1>
                     <!-- Lista progetti -->
-                    <h3 class="uk-margin-medium-top">Progetti - new</h3>
+                    <h3 class="uk-margin-medium-top">Progetti</h3>
                     <ul class="list-faq" uk-accordion="multiple: true">
                         @if(count($page_data['progetti']) > 0)
                             @foreach($page_data['progetti'] as $progetto)
                                 <li>
-                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $progetto['titolo'] }}</h4>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ \App\Helper\Helper::decodifica($progetto->cliente->nome).' - ' . $progetto->titolo }}</h4>
                                     <div class="uk-accordion-content">
-                                        <p>{{ $progetto['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $progetto['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
+                                        <p>{{ $progetto->estratto }}</p>
+                                        <a href="/articolo/view/{{ $progetto->id }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
                         @else
-                        <p>Nessun progetto ancora censito</p>
+                            <p>Nessun progetto ancora censito</p>
                         @endif
                     </ul>
-
 
                     <!-- Credenziali -->
                     <h3 class="uk-margin-medium-top">Credenziali</h3>
@@ -60,10 +47,10 @@
                         @if(count($page_data['credenziali']) > 0)
                             @foreach($page_data['credenziali'] as $credenziale)
                                 <li>
-                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $credenziale['titolo'] }}</h4>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ \App\Helper\Helper::decodifica($credenziale->cliente->nome).' - ' . $credenziale->titolo }}</h4>
                                     <div class="uk-accordion-content">
-                                        <p>{{ $credenziale['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $credenziale['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
+                                        <p>{{ $credenziale->estratto }}</p>
+                                        <a href="/articolo/view/{{ $credenziale->id }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
@@ -71,6 +58,7 @@
                             <p>Nessun oggetto ancora censito</p>
                         @endif
                     </ul>
+
 
                     <!-- Lista call -->
                     <h3 class="uk-margin-medium-top">Rapportini</h3>
@@ -78,10 +66,10 @@
                         @if(count($page_data['rapportini']) > 0)
                             @foreach($page_data['rapportini'] as $rapportino)
                                 <li>
-                                    <h4 class="uk-accordion-title uk-margin-remove">{{ $rapportino['titolo'] }}</h4>
+                                    <h4 class="uk-accordion-title uk-margin-remove">{{ \App\Helper\Helper::decodifica($rapportino->cliente->nome).' - ' . $rapportino->titolo }}</h4>
                                     <div class="uk-accordion-content">
-                                        <p>{{ $rapportino['estratto'] }}</p>
-                                        <a href="/articolo/view/{{ $rapportino['id'] }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
+                                        <p>{{ $rapportino->estratto }}</p>
+                                        <a href="/articolo/view/{{ $rapportino->id }}" class="uk-button uk-button-small uk-button-primary">Vedi articolo <span uk-icon="icon: arrow-right"></span></a>
                                     </div>
                                 </li>
                             @endforeach
@@ -89,7 +77,6 @@
                             <p>Nessun oggetto ancora censito</p>
                         @endif
                     </ul>
-
                 </div>
             </div>
         </div>
